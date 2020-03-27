@@ -1,0 +1,38 @@
+function isValidEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+**** THE VARIABLE LISTED IS A CONFIRMATION OF A LEGITIMATACY OF THE INPUT PROVIDED BY THE USER IN THE WINDOW PROVIDED ****
+
+
+function checkRequired(inputArr) {
+    inputArr.forEach(function(input) {
+        if (input.value.trim() === '') {
+            showError(input, `${getFieldName(input)} is required`);
+        } else {
+            showSuccess(input)
+        }  
+    });
+}
+
+- checkRequired -> the function to check each input provided from the validation input spaces.
+- inputArr -> ability to loop through array of input items in the validation window
+- .forEach -> high order array method to check EACH individual item in the array in quesition
+- **continued from '.forEach' function(input) and beyond is the 'if/else' statement confirming the legitimacy of the input given
+    
+    * if not legit (or correct type of input specified in 'type' via input attribute) -> showError (red border, and message provided stating the field is required)
+
+    * else is legitimate answer -> showSuccess (green border) 
+
+
+function getFieldName (input) {
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+
+**** FUNCTION THAT LITERALLY CUTS OFF THE FIRST LETTER OF THE INPUT IN THE RETURN 
+
+
+ checkRequired([username, email, password, password2]);
+});
+
+**** THE ABILITY TO PASS THROUGH ALL FIELDS OF AN INPUT IN ONE FUNCTION RATHER THAN A FUNCTION FOR EACH INPUT AREA ****
